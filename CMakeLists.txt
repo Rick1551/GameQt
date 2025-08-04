@@ -6,6 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_add_executable(appuntitled
     main.cpp
@@ -14,7 +15,8 @@ qt_add_executable(appuntitled
 qt_add_qml_module(appuntitled
     URI untitled
     VERSION 1.0
-    QML_FILES main.qml 
+    QML_FILES main.qml
+    SOURCES Controller.h Controller.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -30,6 +32,7 @@ set_target_properties(appuntitled PROPERTIES
 
 target_link_libraries(appuntitled
     PRIVATE Qt6::Quick)
+target_link_libraries(appuntitled PRIVATE Qt6::Core)
 
 include(GNUInstallDirs)
 install(TARGETS appuntitled
