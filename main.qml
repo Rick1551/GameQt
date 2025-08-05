@@ -1,8 +1,8 @@
 import QtQuick
 
 Window {
-    width: 640
-    height: 480
+    width: 1480
+    height: 900
     visible: true
     title: qsTr("Hello World")
 
@@ -11,17 +11,17 @@ Window {
         width: 50
         height: 50
         color: "red"
-        x: 100
-        y: 100
+        x: control.x
+        y: control.y
         focus: true
 
         Keys.onPressed:(event) =>
                        {
                         if(event.key === Qt.Key_Left){
-                               move.x -=10 ;
+                               control.moveLeft()
                            }
                         if(event.key === Qt.Key_Right){
-                               move.x += 10;
+                               control.moveRight()
                            }
                         if(event.key === Qt.Key_Up){
                                move.y -= 10;

@@ -11,6 +11,9 @@ class Controller : public QObject
     Q_PROPERTY(double x READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(double y READ y WRITE setY NOTIFY yChanged)
 
+public:
+    Controller(QObject* parent = nullptr);
+
     //Getters
     double x(){ return m_x; }
     double y(){ return m_y; }
@@ -30,6 +33,18 @@ class Controller : public QObject
         }
     }
 
+    Q_INVOKABLE void moveLeft(){
+        setX(m_x - xSpeed);
+        if(m_x < minX){setX(minX);}
+    }
+
+    Q_INVOKABLE  void moveRight(){
+        setX(m_x + xSpeed);
+        if(m_x > maxX) { setX(maxX); }
+    }
+
+    void moveUp(){ setY(m_y - xSpeed); }
+
 signals:
     void xChanged();
     void yChanged();
@@ -38,9 +53,11 @@ private:
     double m_x; //Current position of our rect on x dimension
     double m_y; //y position
     double xSpeed;
+    double minX;
+    double maxX;
+    double bottomY;
 
-public:
-    Controller();
+
 };
 
 #endif // CONTROLLER_H
