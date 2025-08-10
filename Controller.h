@@ -2,6 +2,8 @@
 #define CONTROLLER_H
 
 #include <QObject>
+#include <QTimer>
+#include <qdebug.h>
 
 class Controller : public QObject
 {
@@ -43,7 +45,18 @@ public:
         if(m_x > maxX) { setX(maxX); }
     }
 
-    void moveUp(){ setY(m_y - xSpeed); }
+    Q_INVOKABLE void applyThrust(){
+        ySpeed = maxThrust;
+        if(m_y < bottomY/2.5){
+            ySpeed = 0;
+        }
+
+    }
+
+
+public slots:
+    //Actualiza el estado de movimiento vertical simula la gravedad
+    void updateState();
 
 signals:
     void xChanged();
@@ -56,7 +69,10 @@ private:
     double minX;
     double maxX;
     double bottomY;
-
+    double ySpeed;
+    double maxThrust = -10;
+    double gravity = 0.5;
+    QTimer time;
 
 };
 

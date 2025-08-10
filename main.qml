@@ -6,6 +6,12 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
+    Text {
+        text: "Y: " + control.y
+        anchors.top: parent.top
+        color: "Black"
+    }
+
     Rectangle{
         id: move
         width: 50
@@ -24,11 +30,9 @@ Window {
                                control.moveRight()
                            }
                         if(event.key === Qt.Key_Up){
-                               move.y -= 10;
+                               control.applyThrust()
                            }
-                        if(event.key === Qt.Key_Down){
-                               move.y += 10;
-                           }
+
                        }
     }
 
