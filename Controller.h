@@ -35,24 +35,10 @@ public:
         }
     }
 
-    Q_INVOKABLE void moveLeft(){
-        setX(m_x - xSpeed);
-        if(m_x < minX){setX(minX);}
-    }
-
-    Q_INVOKABLE  void moveRight(){
-        setX(m_x + xSpeed);
-        if(m_x > maxX) { setX(maxX); }
-    }
-
-    Q_INVOKABLE void applyThrust(){
-        ySpeed = maxThrust;
-        if(m_y < bottomY/2.5){
-            ySpeed = 0;
-        }
-
-    }
-
+    //Funciones que se invocan para controlar el objeto con entrada de teclado en qml
+    Q_INVOKABLE void moveLeft();
+    Q_INVOKABLE  void moveRight();
+    Q_INVOKABLE void applyThrust();
 
 public slots:
     //Actualiza el estado de movimiento vertical simula la gravedad

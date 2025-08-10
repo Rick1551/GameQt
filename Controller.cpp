@@ -8,6 +8,24 @@ Controller::Controller(QObject* parent) : m_x(1500/2 -50), m_y(800 - 50), xSpeed
 
 }
 
+void Controller::moveLeft(){
+    setX(m_x - xSpeed);
+    if(m_x < minX){setX(minX);}
+}
+
+void Controller::moveRight(){
+    setX(m_x + xSpeed);
+    if(m_x > maxX) { setX(maxX); }
+}
+
+void Controller::applyThrust(){
+    ySpeed = maxThrust;
+    if(m_y < bottomY/2.5){
+        ySpeed = 0;
+    }
+
+}
+
 
 void Controller::updateState() {
     double oldY = m_y;
