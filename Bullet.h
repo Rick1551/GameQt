@@ -2,8 +2,9 @@
 #define BULLET_H
 
 #include <QObject>
+#include <QTimer>
 
-class Bullet
+class Bullet : public QObject
 {
     Q_OBJECT
     //Propiedades a guardar/actualizar para conexion entre front-end y back-end
@@ -43,6 +44,7 @@ private:
     double m_x;
     double m_y;
     double ySpeed;
+    QTimer bTime;
 };
 
 #endif // BULLET_H

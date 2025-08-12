@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QTimer>
+#include <vector>
+#include "Bullet.h"
 #include <qdebug.h>
 
 class Controller : public QObject
@@ -39,6 +41,7 @@ public:
     Q_INVOKABLE void moveLeft();
     Q_INVOKABLE  void moveRight();
     Q_INVOKABLE void applyThrust();
+    void fireBullet();
 
 public slots:
     //Actualiza el estado de movimiento vertical simula la gravedad

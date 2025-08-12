@@ -1,5 +1,6 @@
 #include "Controller.h"
 
+
 Controller::Controller(QObject* parent) : m_x(1500/2 -50), m_y(800 - 50), xSpeed(10), minX(0),
     maxX(1485),bottomY(800),ySpeed(0){
     //&Controller
@@ -24,6 +25,12 @@ void Controller::applyThrust(){
         ySpeed = 0;
     }
 
+}
+
+void Controller::fireBullet() {
+    QObject* newBullet = new Bullet();
+    std::vector<Bullet*> bulletList;
+    bulletList.push_back(newBullet);
 }
 
 
