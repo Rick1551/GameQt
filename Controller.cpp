@@ -27,11 +27,15 @@ void Controller::applyThrust(){
 
 }
 
-void Controller::fireBullet() {
-    QObject* newBullet = new Bullet();
+Q_INVOKABLE void Controller::fireBullet()
+{
+    Bullet* newBullet = new Bullet(); //Creacion de bala con memoria dinamica
     std::vector<Bullet*> bulletList;
     bulletList.push_back(newBullet);
+    qInfo()<<"Fired bullets";
 }
+
+
 
 
 void Controller::updateState() {

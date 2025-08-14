@@ -41,7 +41,7 @@ public:
     Q_INVOKABLE void moveLeft();
     Q_INVOKABLE  void moveRight();
     Q_INVOKABLE void applyThrust();
-    void fireBullet();
+    Q_INVOKABLE void fireBullet();
 
 public slots:
     //Actualiza el estado de movimiento vertical simula la gravedad

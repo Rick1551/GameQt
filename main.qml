@@ -26,6 +26,9 @@ Window {
                         if(event.key === Qt.Key_Up){
                                control.applyThrust()
                            }
+                        if(event.key === Qt.Key_Space){
+                               control.fireBullet();
+                           }
 
                        }
     }
